@@ -81,7 +81,7 @@ SearchResult UCTSearch::play_simulation(BoardHistory& bh, UCTNode* const node) {
     }
 
     if (node->has_children() && !result.valid()) {
-        auto next = node->uct_select_child(color);
+        auto next = node->uct_select_child(color, node == m_root.get());
         auto move = next->get_move();
         bh.do_move(move);
         result = play_simulation(bh, next);
@@ -139,7 +139,7 @@ Move UCTSearch::get_best_move() {
     // Check whether to randomize the best move proportional
     // to the playout counts.
     if (cfg_randomize) {
-        m_root->randomize_first_proportionally();
+        m_root->randomize_first_proportionally(cfg_root_temp);
     }
 
     Move bestmove = m_root->get_first_child()->get_move();
