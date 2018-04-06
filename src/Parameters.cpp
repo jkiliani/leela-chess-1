@@ -60,6 +60,7 @@ bool cfg_tune_only;
 float cfg_puct;
 float cfg_softmax_temp;
 float cfg_fpu_reduction;
+float cfg_root_temp;
 std::string cfg_weightsfile;
 std::string cfg_logfile;
 std::string cfg_supervise;
@@ -80,9 +81,10 @@ void Parameters::setup_default_parameters() {
     cfg_sgemm_exhaustive = false;
     cfg_tune_only = false;
 #endif
-    cfg_puct = 0.9f;
+    cfg_puct = 0.85f;
     cfg_softmax_temp = 1.0f;
-    cfg_fpu_reduction = 0.25f;
+    cfg_fpu_reduction = 0.0f;
+    cfg_root_temp = 1.0f;
     cfg_min_resign_moves = 20;
     cfg_resignpct = 10;
     cfg_noise = false;

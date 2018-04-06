@@ -69,7 +69,8 @@ static std::string parse_commandline(int argc, char *argv[]) {
         ("resignpct,r", po::value<int>()->default_value(cfg_resignpct),
                         "Resign when winrate is less than x%.")
         ("noise,n", "Apply dirichlet noise to root.")
-        ("randomize", "Randomize move selection at root (only useful for training).")
+        ("randomize,m", po::value<float>()->default_value(cfg_root_temp),
+			"Randomize move selection at root.")
         ("seed,s", po::value<std::uint64_t>(),
                    "Random number generation seed.")
         ("weights,w", po::value<std::string>(), "File with network weights.")

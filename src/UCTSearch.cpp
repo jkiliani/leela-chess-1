@@ -140,7 +140,7 @@ Move UCTSearch::get_best_move() {
     // Check whether to randomize the best move proportional
     // to the playout counts.
     if (cfg_randomize) {
-        m_root->randomize_first_proportionally();
+        m_root->randomize_first_proportionally(cfg_root_temp);
     }
 
     Move bestmove = m_root->get_first_child()->get_move();
